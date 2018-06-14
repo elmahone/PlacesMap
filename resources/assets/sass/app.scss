@@ -1,0 +1,258 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+// Import files
+@import "reset";
+@import "mixins";
+@import "variables";
+@import "elements";
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    color: $font-color;
+    font-family: $font-family-sans-serif;
+    background: rgb(230, 230, 240);
+}
+
+nav {
+    width: 100%;
+    border-top: 4px solid $accent-color;
+    position: absolute;
+    top: 0;
+    z-index: 3;
+    ul {
+        width: 100%;
+        background: $bg-color;
+        color: $nav-font-color;
+        @include flexbox;
+        @include flex-direction(row);
+        @include justify-content(center);
+        li {
+            flex-grow: 1;
+            a,
+            b {
+                line-height: $nav-height;
+                display: block;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+            }
+            a:hover {
+                background-color: darken($bg-color, 10%);
+            }
+        }
+    }
+}
+
+main {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.input {
+    border: none;
+    background: darken(#fff, 10%);
+    border-radius: 2px;
+    padding: .55rem;
+    font-size: $font-size-mid;
+    margin: 0 5px;
+
+}
+.input.big {
+    padding: .75rem;
+    margin: 0;
+    font-size: $font-size-huge;
+}
+
+.button {
+    border: none;
+    padding: .5rem 1rem;
+    font-size: $font-size-mid;
+}
+.button.big {
+    background: $bg-color;
+    border-left: 5px solid $accent-color;
+    color: #fff;
+    padding: .75rem;
+    margin-left: -4px;
+    font-size: $font-size-huge;
+}
+.button.green {
+    background: green;
+    color: #fff;
+}
+.button.red {
+    background: red;
+    color: #fff;
+}
+
+#place-form {
+    .info-row {
+        @include flexbox;
+        @include flex-direction(row);
+        @include flex-wrap(wrap);
+        padding: .5rem;
+        .input {
+            font-size: $font-size-small;
+        }
+
+        input:only-child, textarea:only-child {
+            width: 100%;
+            display: block;
+        }
+    }
+    .info-help-text {
+        border-bottom: 1px solid #ccc;
+        padding: 5px 0;
+    }
+    .buttons {
+        padding: .5rem;
+    }
+    .keyword-label {
+        padding: 0 5px;
+    }
+}
+
+#container {
+    // padding-top: $nav-height;
+    @include flexbox;
+    @include align-items(center);
+    height: 100%;
+    #login {
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 5px;
+        width: 50rem;
+        @include box-shadow(0, 2px, 4px, 0, rgba(0, 0, 0, 0.2));
+        #login-container {
+            padding: 5rem 0;
+            text-align: center;
+        }
+    }
+    #main-content {
+        height: 100%;
+        width: 100%;
+        #show-open {
+            position: absolute;
+            top: $nav-height + 1rem;
+            right: 0;
+            z-index: 4;
+            background: rgba(0, 0, 0, 0.6);
+            border-left: 4px solid $accent-color;
+            label {
+                padding: 1rem;
+                color: #fff;
+            }
+        }
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-height: 30rem;
+    overflow-y: auto;
+    margin: 0;
+    border-top: 4px solid $accent-color;
+    text-align: center;
+    color: $nav-font-color;
+    background: $bg-color;
+    #menu-toggle {
+        a {
+            width: 100%;
+            cursor: pointer;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: .5rem;
+            text-decoration: none;
+            &:hover {
+                background-color: darken($bg-color, 10%);
+            }
+        }
+    }
+    #footer-header {
+        padding: 1rem 0;
+    }
+    .footer-row {
+        @include flexbox;
+        @include flex-direction(row);
+        @include flex-wrap(wrap);
+        @include justify-content(center);
+        width: 100%;
+        .footer-item {
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 0.5rem;
+            flex-grow: 1;
+            @include flex-basis(20%);
+            max-height: 13rem;
+            min-height: 13rem;
+            max-width: 20rem;
+            min-width: 20rem;
+            background-color: lighten($bg-color, 5%);
+            padding-bottom: 4px;
+            .place-title {
+                pointer-events: none;
+                margin: 1rem 0;
+            }
+            .place-desc {
+                pointer-events: none;
+                margin: 1rem 0;
+            }
+            .place-open {
+                pointer-events: none;
+            }
+            &:hover {
+                padding-bottom: 0;
+                background-color: darken($bg-color, 3%);
+                border-bottom: 4px solid $accent-color;
+            }
+        }
+        .footer-item.keyword {
+            min-height: 0;
+
+            .keyword-label {
+                pointer-events: none;
+                padding: 1rem 0;
+            }
+        }
+        .footer-item.active {
+            border-bottom: 4px solid red;
+            padding-bottom: 0;
+
+            &:hover {
+                padding-bottom: 4px;
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+@import "media-queries";
